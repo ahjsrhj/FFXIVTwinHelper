@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useOverlayData } from '../use/ngld'
 
-const { boss1Info, boss2Info, zoneID, showDebugInfo, HPDiff } = useOverlayData()
+const { boss1Info, boss2Info, zoneID, showDebugInfo, HPDiff, checkZoneID } = useOverlayData()
 const boss1HP = computed(() => boss1Info.value.maxHP > 0 ? Math.round(boss1Info.value.currentHP / boss1Info.value.maxHP * 1000) / 10 : 0)
 const boss2HP = computed(() => boss2Info.value.maxHP > 0 ? Math.round(boss2Info.value.currentHP / boss2Info.value.maxHP * 1000) / 10 : 0)
 const hpDiffValue = computed(() => Math.abs(boss1HP.value * 10 - boss2HP.value * 10) / 10)
@@ -18,9 +18,13 @@ const hpDiffValue = computed(() => Math.abs(boss1HP.value * 10 - boss2HP.value *
   .hp-line(v-if="hpDiffValue > 0")
     .hp-name 血量差
     .hp-percent.hp-disparity {{ hpDiffValue }}%
-  .hp-line(v-if="showDebugInfo")
-    .hp-name zoneID
-    .fs-16.fc-red {{ zoneID }}
+  template(v-if="showDebugInfo")
+    .hp-line
+      .hp-name 当前ID
+      .fs-16.fc-red {{ zoneID }}
+    .hp-line
+      .hp-name 工作ID
+      .fs-16.fc-red {{ checkZoneID }}
 </template>
 
 <style>

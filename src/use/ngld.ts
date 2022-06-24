@@ -48,13 +48,13 @@ export const useOverlayData = () => {
   boss1Info.value.name = name1?.toString() || ENTRY_1_NAME
   boss2Info.value.name = name2?.toString() || ENTRY_2_NAME
   showDebugInfo.value = debug === '1'
-  if (Number.isInteger(diff))
+  if (diff && Number.isInteger(Number(diff)))
     HPDiff.value = Number(diff)
 
   const boss1Reg = getEntryReg(boss1Info.value.name)
   const boss2Reg = getEntryReg(boss2Info.value.name)
 
-  if (Number.isInteger(_zoneID))
+  if (_zoneID && Number.isInteger(Number(_zoneID)))
     checkZoneID.value = Number(_zoneID)
 
   const dispatchLogLine = (rowLine: string) => {
@@ -105,5 +105,6 @@ export const useOverlayData = () => {
     zoneID,
     showDebugInfo,
     HPDiff,
+    checkZoneID,
   }
 }
