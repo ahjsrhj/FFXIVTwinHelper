@@ -1,50 +1,69 @@
 <script setup lang="ts">
-const name = $ref('')
+import { useOverlayData } from '../use/ngld'
 
-const router = useRouter()
-const go = () => {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name)}`)
-}
+const { boss1Info, boss2Info, zoneID, showDebugInfo, HPDiff } = useOverlayData()
+const boss1HP = computed(() => boss1Info.value.maxHP > 0 ? Math.round(boss1Info.value.currentHP / boss1Info.value.maxHP * 1000) / 10 : 0)
+const boss2HP = computed(() => boss2Info.value.maxHP > 0 ? Math.round(boss2Info.value.currentHP / boss2Info.value.maxHP * 1000) / 10 : 0)
+const hpDiffValue = computed(() => Math.abs(boss1HP.value * 10 - boss2HP.value * 10) / 10)
 </script>
 
-<template>
-  <div>
-    <div i-carbon-campsite text-4xl inline-block />
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
-        Vitesse Lite
-      </a>
-    </p>
-    <p>
-      <em text-sm op75>Opinionated Vite Starter Template</em>
-    </p>
-
-    <div py-4 />
-
-    <input
-      id="input"
-      v-model="name"
-      placeholder="What's your name?"
-      type="text"
-      autocomplete="false"
-      p="x-4 y-2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    >
-
-    <div>
-      <button
-        class="m-3 text-sm btn"
-        :disabled="!name"
-        @click="go"
-      >
-        Go
-      </button>
-    </div>
-  </div>
+<template lang="pug">
+.container-border.vertical.top.left.p-20.br-18(:class="{ 'bg-alert': hpDiffValue > HPDiff }")
+  .hp-line(v-if="boss1HP > 0")
+    .hp-name {{ boss1Info.name }}
+    .hp-percent {{ boss1HP }}%
+  .hp-line(v-if="boss2HP > 0")
+    .hp-name {{ boss2Info.name }}
+    .hp-percent {{ boss2HP }}%
+  .hp-line(v-if="hpDiffValue > 0")
+    .hp-name 血量差
+    .hp-percent.hp-disparity {{ hpDiffValue }}%
+  .hp-line(v-if="showDebugInfo")
+    .hp-name zoneID
+    .fs-16.fc-red {{ zoneID }}
 </template>
+
+<style>
+.container-border {
+  box-sizing: border-box;
+  border: 2px solid #e9ff2394;
+}
+
+.bg-alert {
+  background-color: #e03c8a43;
+}
+
+.hp-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.hp-name {
+  width: 150px;
+  text-align: left;
+  color: white;
+  font-size: 18px;
+  font-weight: bolder;
+  text-shadow: 0.2rem 0rem 0.5rem #58b2dc, -0.2rem 0rem 0.5rem #58b2dc,
+    0rem 0.2rem 0.5rem #58b2dc, 0rem -0.2rem 0.5rem #58b2dc;
+}
+
+.hp-percent {
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  text-shadow: 0.2rem 0rem 0.5rem red, -0.2rem 0rem 0.5rem red,
+    0rem 0.2rem 0.5rem red, 0rem -0.2rem 0.5rem red;
+}
+
+.hp-disparity {
+  font-size: 30px;
+}
+
+.hp-name-light {
+  color: red;
+}
+</style>
