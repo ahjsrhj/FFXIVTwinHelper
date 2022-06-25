@@ -8,7 +8,7 @@ const hpDiffValue = computed(() => Math.abs(boss1HP.value * 10 - boss2HP.value *
 </script>
 
 <template lang="pug">
-.container-border.vertical.top.left.p-20.br-18(:class="{ 'bg-alert': hpDiffValue > HPDiff }")
+.container-border.vertical.top.left.p-20.br-18(:class="{ 'cbg-alert': hpDiffValue > HPDiff }")
   .hp-line(v-if="boss1HP > 0")
     .hp-name {{ boss1Info.name }}
     .hp-percent {{ boss1HP }}%
@@ -33,7 +33,7 @@ const hpDiffValue = computed(() => Math.abs(boss1HP.value * 10 - boss2HP.value *
   border: 2px solid #e9ff2394;
 }
 
-.bg-alert {
+.cbg-alert {
   background-color: #e03c8a43;
 }
 
