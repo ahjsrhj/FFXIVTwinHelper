@@ -24,6 +24,7 @@
     "@unocss/reset": "^0.39.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "eslint": "^8.17.0",
+    "gh-pages": "^4.0.0",
     "jsdom": "^19.0.0",
     "less": "^4.1.3",
     "pnpm": "^7.2.1",
