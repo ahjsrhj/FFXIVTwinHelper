@@ -11,14 +11,13 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     timeout-minutes: 10
 
     strategy:
       matrix:
-        node_version: [14.x, 16.x]
-        os: [ubuntu-latest, windows-latest]
+        node_version: [16.x]
       fail-fast: false
 
     steps:
@@ -36,6 +35,12 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
 
       - name: Lint
         run: pnpm run lint
