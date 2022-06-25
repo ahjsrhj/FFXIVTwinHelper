@@ -7,6 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 
 export default defineConfig({
+  base: './',
   server: {
     port: 3333,
     host: '0.0.0.0',
