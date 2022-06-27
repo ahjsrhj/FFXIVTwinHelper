@@ -1,23 +1,33 @@
 <script setup lang="ts">
 import { useOverlayData } from '../use/ngld'
 
-const { boss1Info, boss2Info, zoneID, showDebugInfo, HPDiff, checkZoneID } = useOverlayData()
-const boss1HP = computed(() => boss1Info.value.maxHP > 0 ? Math.round(boss1Info.value.currentHP / boss1Info.value.maxHP * 1000) / 10 : 0)
-const boss2HP = computed(() => boss2Info.value.maxHP > 0 ? Math.round(boss2Info.value.currentHP / boss2Info.value.maxHP * 1000) / 10 : 0)
-const hpDiffValue = computed(() => Math.abs(boss1HP.value * 10 - boss2HP.value * 10) / 10)
+const {
+  boss1Info,
+  boss2Info,
+  zoneID,
+  showDebugInfo,
+  checkZoneID,
+  showInfo,
+  showBGAlert,
+  HPDiffValue,
+  showBorder,
+} = useOverlayData()
 </script>
 
 <template lang="pug">
-.container-border.vertical.top.left.p-20.br-18(:class="{ 'cbg-alert': hpDiffValue > HPDiff }")
-  .hp-line(v-if="boss1HP > 0")
-    .hp-name {{ boss1Info.name }}
-    .hp-percent {{ boss1HP }}%
-  .hp-line(v-if="boss2HP > 0")
-    .hp-name {{ boss2Info.name }}
-    .hp-percent {{ boss2HP }}%
-  .hp-line(v-if="hpDiffValue > 0")
-    .hp-name 血量差
-    .hp-percent.hp-disparity {{ hpDiffValue }}%
+.vertical.top.left.p-20.br-18(:class="{ 'cbg-alert': showBGAlert, 'container-border': showBorder }")
+  template(v-if="showInfo")
+    .hp-line
+      .hp-name(:class="{ 'hp-name-light': boss1Info.percent > boss2Info.percent }")
+        | {{ boss1Info.name }}
+      .hp-percent {{ boss1Info.percent }}%
+    .hp-line
+      .hp-name(:class="{ 'hp-name-light': boss1Info.percent < boss2Info.percent }")
+        | {{ boss2Info.name }}
+      .hp-percent {{ boss2Info.percent }}%
+    .hp-line
+      .hp-name 血量差
+      .hp-percent.hp-disparity {{ HPDiffValue }}%
   template(v-if="showDebugInfo")
     .hp-line
       .hp-name 当前ID
