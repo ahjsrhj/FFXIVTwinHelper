@@ -16,13 +16,13 @@
   - 绝龙诗 日语: 配置链接 `https://twin.ffxiv.imrhj.cn/?name1=フレースヴェルグ&name2=ニーズヘッグ` (待验证)
   - 绝龙诗 英语: 配置链接 `https://twin.ffxiv.imrhj.cn/?name1=Hraesvelgr&name2=Nidhogg` (待验证)
 
-  其余副本请参考下方配置项自行配置
+  其余副本请参考下方配置项自行配置.
 
 ## 配置项
 
-通过在url query上配置参数来调整配置项
+通过在url query上配置参数来调整配置项.
 
-例如：`https://twin.ffxiv.imrhj.cn/?debug=1`
+例如：`https://twin.ffxiv.imrhj.cn/?debug=1`.
 
 全部可用选项如下
 
