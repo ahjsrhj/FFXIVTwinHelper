@@ -3,7 +3,7 @@
 [![](https://img.shields.io/github/license/ahjsrhj/FFXIVTwinHelper)](https://github.com/ahjsrhj/FFXIVTwinHelper/blob/main/LICENSE)
 [![](https://img.shields.io/github/workflow/status/ahjsrhj/FFXIVTwinHelper/build)](https://github.com/ahjsrhj/FFXIVTwinHelper/actions)
 
-针对Raid本中双目标血量差进行监控, 默认配置为监控绝龙诗P6血量差, 你也可以通过调整参数用于绝亚/绝巴哈或者其它任意需要监控双目标血量差的场景.
+针对Raid本中双目标血量差进行监控, 默认配置为监控绝龙诗P6血量差, 你也可以通过调整参数用于绝亚/绝巴哈或者其它任意需要监控双目标血量差的场景
 
 此工具依赖于 [ngld/OverlayPlugin](https://github.com/ngld/OverlayPlugin)
 
