@@ -1,6 +1,6 @@
 {
   "name": "ffxiv-twin-helper",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@7.1.5",
   "license": "MIT",

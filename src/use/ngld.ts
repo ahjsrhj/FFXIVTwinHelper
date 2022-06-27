@@ -1,4 +1,5 @@
 import OverlayAPI from 'ffxiv-overlay-api'
+import packageInfo from '../../package.json'
 
 export const WIPE_REG = /^33\|.{33}\|.{8}\|4000001[026].+$/
 
@@ -40,6 +41,8 @@ export const useOverlayData = () => {
   const showBorder = ref<boolean>(false)
   const boss1Info = reactive<IBossInfo>({ currentHP: 0, maxHP: 0, percent: 0, name: '' })
   const boss2Info = reactive<IBossInfo>({ currentHP: 0, maxHP: 0, percent: 0, name: '' })
+
+  const version = packageInfo.version
 
   // computed
   const enabledCheck = computed(() => zoneID.value === checkZoneID.value)
@@ -112,8 +115,6 @@ export const useOverlayData = () => {
   overlay.startEvent()
   const showInfo = ref(false)
 
-  // const boss1HPPercent = computed(() => boss1Info.maxHP > 0 ? Math.round(boss1Info.currentHP / boss1Info.maxHP * 1000) / 10 : 0)
-  // const boss2HPPercent = computed(() => boss2Info.maxHP > 0 ? Math.round(boss2Info.currentHP / boss2Info.maxHP * 1000) / 10 : 0)
   const HPDiffValue = computed(() => Math.abs(boss1Info.percent * 10 - boss2Info.percent * 10) / 10)
   const showBGAlert = computed(() => HPDiffValue.value > HPDiff.value)
 
@@ -140,5 +141,6 @@ export const useOverlayData = () => {
     showInfo,
     showBGAlert,
     showBorder,
+    version,
   }
 }

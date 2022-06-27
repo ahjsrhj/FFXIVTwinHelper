@@ -11,6 +11,7 @@ const {
   showBGAlert,
   HPDiffValue,
   showBorder,
+  version,
 } = useOverlayData()
 </script>
 
@@ -35,6 +36,9 @@ const {
     .hp-line
       .hp-name 工作ID
       .fs-16.fc-red {{ checkZoneID }}
+    .hp-line
+      .hp-name 版本号
+      .fs-16.fc-red {{ version }}
 </template>
 
 <style>
