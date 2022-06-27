@@ -1,6 +1,7 @@
 # FFXIVTwinHelper FF14双目标血量监控
 
 [![](https://img.shields.io/github/license/ahjsrhj/FFXIVTwinHelper)](https://github.com/ahjsrhj/FFXIVTwinHelper/blob/main/LICENSE)
+[![](https://img.shields.io/github/workflow/status/ahjsrhj/FFXIVTwinHelper/build)](https://github.com/ahjsrhj/FFXIVTwinHelper/actions)
 
 针对Raid本中双目标血量差进行监控, 默认配置为监控绝龙诗P6血量差, 你也可以通过调整参数用于绝亚/绝巴哈或者其它任意需要监控双目标血量差的场景.
 
@@ -46,5 +47,6 @@ A: url后面加上参数 `debug=1` 开启调试模式, 默认显示当前区域I
 
 ## 感谢
 
-- [ffxiv-overlay-api](https://github.com/dsrkafuu/ffxiv-overlay-api) - MIT License
+- [antfu/vitesse-lite](https://github.com/antfu/vitesse-lite) - MIT License
 - [ngld/OverlayPlugin](https://github.com/ngld/OverlayPlugin) - MIT License
+- [dsrkafuu/ffxiv-overlay-api](https://github.com/dsrkafuu/ffxiv-overlay-api) - MIT License
