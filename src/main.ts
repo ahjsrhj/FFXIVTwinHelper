@@ -6,6 +6,7 @@ import App from './App.vue'
 // import '@unocss/reset/tailwind.css'
 import 'uno.css'
 import './style/base.less'
+// import './test/index'
 
 const app = createApp(App)
 const router = createRouter({
