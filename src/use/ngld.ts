@@ -1,7 +1,7 @@
 import OverlayAPI from 'ffxiv-overlay-api'
 import packageInfo from '../../package.json'
 
-export const WIPE_REG = /^33\|.{33}\|.{8}\|4000001[026].+$/
+export const WIPE_REG = /^33\|.{33}\|.{8}\|400000(0F|1[31]).+$/
 
 export const getEntryReg = (name: string) => new RegExp(`^37\\|.{33}\\|.{8}\\|${name}\\|.{8}\\|(\\d+)\\|(\\d*)\\|.+$`)
 
